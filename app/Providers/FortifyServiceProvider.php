@@ -45,10 +45,14 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
          // instruct laravel which view to return for /login request
-         Fortify::loginView(fn () => view('auth.login'));
+         Fortify::loginView(function () {
+          view('auth.login');
+        });
 
          // instruct laravel which view to return for /register  request
-         Fortify::registerView(fn () => view('auth.register'));
+         Fortify::registerView(function () {
+             view('auth.register');
+         });
  
          // instruct laravel which view to return for /forgot-password  request
          Fortify::requestPasswordResetLinkView(function () {
@@ -60,7 +64,9 @@ class FortifyServiceProvider extends ServiceProvider
              return view('auth.reset-password', ['request' => $request]);
          });
          // instruct laravel which view to return for /email/verify 
-         Fortify::verifyEmailView(fn () => view('auth.verify-email'));
+         Fortify::verifyEmailView(function() { 
+             view('auth.verify-email');
+            });
  
          // instruct laravel which view to return for /user/confirm-password
          Fortify::confirmPasswordView(function () {
